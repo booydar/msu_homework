@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 #include "numbers.dat"
 
 bool is_prime(int n) {
