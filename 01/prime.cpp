@@ -3,8 +3,6 @@
 #include <vector>
 #include "numbers.dat"
 
-const int maxval = 99999;
-
 bool is_prime(int n) {
     if (n == 2)
         return true;
