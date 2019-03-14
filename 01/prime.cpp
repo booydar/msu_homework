@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 #include <vector>
 #include "numbers.dat"
 
@@ -8,7 +7,7 @@ bool is_prime(int n) {
         return true;
     if (n == 1 || n % 2 == 0)
         return false;
-    for (int i = 3; i <= sqrt(n); i += 2) {
+    for (int i = 3; i*i <= n; i += 2) {
         if (n % i == 0)
             return false;
     }
