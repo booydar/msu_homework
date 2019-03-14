@@ -35,7 +35,7 @@ int bin(int n) {
 
 int main(int argc, char** argv) {
     if (argc < 3 || argc % 2 == 0)
-        return 0;
+        return -1;
     std::vector<int> v(argc - 1);
     for (int i = 0; i < argc - 1; ++i) {
         v[i] = std::atoi(argv[i + 1]);
