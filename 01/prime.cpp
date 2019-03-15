@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
 #include "numbers.dat"
 
 bool is_prime(int n) {
@@ -20,7 +19,7 @@ int bin(int n) {
     int r = Size - 1;
     int m = 0;
     while (l <= r) {
-        m = floor((l + r) / 2);
+        m = (l + r) / 2;
         if (Data[m] < n)
             l = m + 1;
         else if (Data[m] > n)
