@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include "numbers.dat"
 
 bool is_prime(int n) {
@@ -7,7 +6,7 @@ bool is_prime(int n) {
         return true;
     if (n == 1 || n % 2 == 0)
         return false;
-    for (int i = 3; i*i <= n; i += 2) {
+    for (int i = 3; i * i <= n; i += 2) {
         if (n % i == 0)
             return false;
     }
@@ -33,28 +32,25 @@ int bin(int n) {
 int main(int argc, char** argv) {
     if (argc < 3 || argc % 2 == 0)
         return -1;
-    std::vector<int> v(argc - 1);
-    for (int i = 0; i < argc - 1; ++i) {
-        v[i] = std::atoi(argv[i + 1]);
-    }
-    for (int i = 0; i < argc - 1; i += 2) {
-        if (v[i] > v[i + 1]) {
+    for (int i = 1; i < argc; i += 2) {
+        int l = std::atoi(argv[i]), r = std::atoi(argv[i + 1]);
+        if (l > r) {
             std::cout << 0 << std::endl;
             continue;
         }
-        int num = 0, left = bin(v[i]), right = bin(v[i + 1]);
+        int num = 0, left = bin(l), right = bin(r);
         if (left == -1 || right == -1) {
             std::cout << 0 << std::endl;
             continue;
         }
         while (left != 0) {
-            if (Data[left - 1] == v[i])
+            if (Data[left - 1] == l)
                 --left;
             else
                 break;
         }
         while (right != Size - 1) {
-            if (Data[right + 1] == v[i+1])
+            if (Data[right + 1] == r)
                 ++right;
             else
                 break;
