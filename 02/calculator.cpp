@@ -78,7 +78,7 @@ int main(int argc, char** argv) {
         return 1;
     }
     std::string str = argv[1];
-    str.erase(remove(str.begin(), str.end(), ' '), str.end());
+    str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
     Calculator c(str);
     try {
         std::cout << c.eval() << std::endl;
