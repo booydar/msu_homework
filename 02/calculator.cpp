@@ -66,7 +66,7 @@ private:
     }
         
 public:
-    Calculator(std::string s)
+    Calculator(const std::string& s)
         : str(s), size(s.size()), i(0) {}
         
     int64_t eval() { return expr(0); }
