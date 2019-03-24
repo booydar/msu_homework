@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <algorithm>
 
-void error() { throw std::invalid_argument("error"); }
+[[noreturn]] void error() { throw std::invalid_argument("error"); }
 
 class Calculator {
 private:
