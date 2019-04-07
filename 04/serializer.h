@@ -73,7 +73,7 @@ private:
     
     template <class T>
     Error process(T& object){
-        if(get(object) == Error::CorruptedArchive)
+        if (get(object) == Error::CorruptedArchive)
             return Error::CorruptedArchive;
         else
             return Error::NoError;
@@ -81,7 +81,7 @@ private:
 
     template <class T, class... ArgsT>
     Error process(T& object, ArgsT&&... args){
-        if(get(object) == Error::CorruptedArchive)
+        if (get(object) == Error::CorruptedArchive)
             return Error::CorruptedArchive;
         else
             return process(std::forward<ArgsT>(args)...);
@@ -90,7 +90,7 @@ private:
     Error get(uint64_t& value) {
         std::string text;
         in_ >> text;
-        if(text[0] == '-')
+        if (text[0] == '-')
             return Error::CorruptedArchive;
         else try {
             value = std::stoul(text);
