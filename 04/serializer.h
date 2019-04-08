@@ -28,24 +28,24 @@ private:
     std::ostream& out_;
 
     template<class T>
-    Error process(T object) {
+    Error process(T&& object) {
         print(object);
         return Error::NoError;
     }
 
     template<class T, class... ArgsT>
-    Error process(T object, ArgsT&&... args) {
+    Error process(T&& object, ArgsT&&... args) {
         print(object);
         out_ << Separator;
         return process(std::forward<ArgsT>(args)...);
     }
 
     template<class T>
-    void print(T object) {
+    void print(T& object) {
         out_ << object;
     }
 
-    void print(bool object) {
+    void print(bool& object) {
         if (object)
             out_ << "true";
         else
@@ -72,7 +72,7 @@ private:
     std::istream& in_;
     
     template <class T>
-    Error process(T& object){
+    Error process(T&& object){
         if (get(object) == Error::CorruptedArchive)
             return Error::CorruptedArchive;
         else
@@ -80,7 +80,7 @@ private:
     }
 
     template <class T, class... ArgsT>
-    Error process(T& object, ArgsT&&... args){
+    Error process(T&& object, ArgsT&&... args){
         if (get(object) == Error::CorruptedArchive)
             return Error::CorruptedArchive;
         else
