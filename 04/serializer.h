@@ -41,11 +41,11 @@ private:
     }
 
     template<class T>
-    void print(T& object) {
+    void print(T&& object) {
         out_ << object;
     }
 
-    void print(bool& object) {
+    void print(bool object) {
         if (object)
             out_ << "true";
         else
