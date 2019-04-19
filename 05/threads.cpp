@@ -6,25 +6,25 @@
 
 std::mutex mutex;
 std::condition_variable cv;
-int ping = 0;
-int pong = 1;
+bool ping = 0;
+bool pong = 1;
 
-void print(std::string s, int& j) {
+void print(const std::string& s, bool& j) {
     for (int i = 0; i < 500000; ++i) {
         std::unique_lock<std::mutex> lock(mutex);
         if (j == ping) {
             while (!pong)
                 cv.wait(lock);
             std::cout << s << "\n";
-            ping = (ping + 1) % 2;
-            pong = (pong + 1) % 2;
+            ping = !ping;
+            pong = !pong;
             cv.notify_one();
         } else {
             while (!ping)
                 cv.wait(lock);
             std::cout << s << "\n";
-            ping = (ping + 1) % 2;
-            pong = (pong + 1) % 2;
+            ping = !ping;
+            pong = !pong;
             cv.notify_one();
         }
     }
