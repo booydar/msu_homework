@@ -38,10 +38,8 @@ void read(std::ifstream& in, std::vector<uint64_t>& v) {
         size_t i = 0;
         uint64_t x;
         mutex.lock();
-        while (i < size && in >> x) {
+        while (i++ < size && in >> x)
             v[i] = x;
-            ++i;
-        }
         mutex.unlock();
         if (i < size)
             std::sort(begin(v), begin(v) + i);
